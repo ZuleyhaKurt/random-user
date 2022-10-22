@@ -1,18 +1,37 @@
-import Email from "./assets/email.svg";
-import Location from "./assets/location.svg";
-import Phone from "./assets/phone.svg";
+// import Email from "./assets/email.svg";
+// import Location from "./assets/location.svg";
+// import Phone from "./assets/phone.svg";
 import "./App.css";
 import Table from "react-bootstrap/Table";
 import { useEffect, useState } from "react";
-import  axios  from "axios"
+import axios from "axios"
 function App() {
-const [info, setInfo] = useState([])
+
+
+const [info, setInfo] = useState("")
+ 
   const getUser = async () => {
     const url = "https://randomuser.me/api/"
     try {
-      const { data: { results } } = await axios(url)
+      const { data:{results} } = await axios(url)
       console.log(results[0])
       setInfo(results[0])
+      const {
+        picture: { large },
+        name: { title, first, last },
+        email,
+        cell,
+        location: { state, country },
+        registred: { date, age },
+      } = results[0]
+    
+  setInfo({
+    large,
+    title,
+    first, last,
+    email,cell,state,country,date,age,
+  })
+  
     } catch (error) {
       console.log(error)
     }
@@ -20,8 +39,8 @@ const [info, setInfo] = useState([])
   }
   console.log(info);
 
-
-
+ 
+  
   useEffect(() => {
     getUser()
   },[])
@@ -43,7 +62,7 @@ const [info, setInfo] = useState([])
         <thead>
           <tr className=" justify-content-center">
             <th style={{ width: "100px" }}>
-              <img className="rounded-circle"></img>
+             <img className="rounded-circle">{large}</img>
             </th>
             <th className="justify-content-center align-items-center py-5">
               <p className="d-block"></p>
@@ -53,19 +72,19 @@ const [info, setInfo] = useState([])
         <tbody>
           <tr>
             <td>
-              <Email />
+              {/* <Email /> */}
             </td>
             <td colSpan={2}></td>
           </tr>
           <tr>
             <td>
-              <Phone />
+              {/* <Phone /> */}
             </td>
             <td colSpan={2}></td>
           </tr>
           <tr>
             <td>
-              <Location />
+              {/* <Location /> */}
             </td>
             <td colSpan={2}></td>
           </tr>
