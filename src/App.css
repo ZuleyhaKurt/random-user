@@ -13,8 +13,8 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.App {
+  background-color: rgba(128, 128, 128, 0.418);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+td{
+  border-bottom: 1px solid grey;
+}
+.random{
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  outline: none;
+  background-color:orange;
+  border-radius: 10px;
 }
